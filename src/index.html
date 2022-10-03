@@ -10,31 +10,36 @@
   <link href="output.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-200">
+<body class="bg-gray-100">
   <div id="urnaDiv" class="flex justify-center items-center h-screen">
     <div class="select-none max-w-xs">
-      <h1 class="font-semibold text-center text-4xl">Insira seu Voto</h1><br>
-      <input id="inputVoto" class="text-center w-full text-6xl" readonly maxlength="5" type="text">
+      <!-- <h1 class="font-semibold text-center text-4xl">Insira seu Voto</h1><br> -->
+      <div class="bg-gray-700 rounded-xl p-2">
+      <input id="inputVoto" class="text-center font-bold w-full text-6xl mb-2 rounded-t-xl" readonly maxlength="5" type="text">
+      
       <div class="grid grid-cols-3 text-2xl font-semibold">
-        <button onclick="addNumero(7)" class="bg-gray-900 m-2  h-16 text-white">7</button>
-        <button onclick="addNumero(8)" class="bg-gray-900  m-2 h-16 text-white">8</button>
-        <button onclick="addNumero(9)" class="bg-gray-900  m-2 h-16  text-white">9</button>
-        <button onclick="addNumero(4)" class="bg-gray-900 m-2 h-16  text-white">4</button>
-        <button onclick="addNumero(5)" class="bg-gray-900 m-2 h-16  text-white">5</button>
-        <button onclick="addNumero(6)" class="bg-gray-900 m-2 h-16  text-white">6</button>
-        <button onclick="addNumero(1)" class="bg-gray-900 m-2 h-16  text-white">1</button>
-        <button onclick="addNumero(2)" class="bg-gray-900 m-2 h-16  text-white">2</button>
-        <button onclick="addNumero(3)" class="bg-gray-900 m-2 h-16  text-white">3</button>
-        <button onclick="" class=" m-2 h-16  text-white"></button>
-        <button onclick="addNumero(0)" class="bg-gray-900 m-2 h-16  text-white">0</button>
-        <button onclick="" class=" m-2 h-16  text-white"></button>
+        <button onclick="addNumero(7)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500 text-white">7</button>
+        <button onclick="addNumero(8)" class="bg-gray-900  m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500 text-white">8</button>
+        <button onclick="addNumero(9)" class="bg-gray-900  m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500  text-white">9</button>
+        <button onclick="addNumero(4)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500  text-white">4</button>
+        <button onclick="addNumero(5)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500   text-white">5</button>
+        <button onclick="addNumero(6)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500   text-white">6</button>
+        <button onclick="addNumero(1)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500  text-white">1</button>
+        <button onclick="addNumero(2)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-90 duration-500  text-white">2</button>
+        <button onclick="addNumero(3)" class="bg-gray-900 m-1 shadow-gray-800 h-16 active:shadow-none active:scale-95 duration-500  text-white">3</button>
+        <a onclick="" class="bg-gray-900 m-1 h-16 shadow-md shadow-gray-800  text-white"></a>
+        <button onclick="addNumero(0)" class="bg-gray-900 m-1 h-16 shadow-gray-800 active:shadow-none active:scale-90 duration-500   text-white">0</button>
+        <a onclick="" class="bg-gray-900  m-1 h-16 shadow-md shadow-gray-800  text-white"></a>
       </div>
       <div class="mt-2 flex">
+        <button onclick="limparVoto()" 
+        class="flex-1 bg-gray-400 p-2 h-16 font-bold uppercase m-1 shadow-md shadow-gray-800 rounded-bl-xl text-white">Branco</button>
         <button onclick="confirmarVoto()"
-          class="flex-1 bg-green-500 p-2 h-16 font-bold uppercase text-white">Confirmar</button>
+          class="flex-1 bg-green-500 p-2 h-16 font-bold uppercase m-1 shadow-md shadow-gray-800 text-white">Confirmar</button>
         <button onclick="limparVoto()"
-          class="flex-1 bg-red-500 p-2 h-16 font-bold uppercase text-white">Corrigir</button>
+          class="flex-1 bg-red-500 p-2 h-16 font-bold uppercase m-1 shadow-md shadow-gray-800 rounded-br-xl text-white">Corrigir</button>
       </div>
+    </div>
     </div>
   </div>
 
@@ -63,7 +68,7 @@
 
 
     urnaDiv.style.display = "none"
-    avisoMsg.innerHTML = "Voto Confirmado!"
+    avisoMsg.innerHTML = `<span style="color:green;">Voto Confirmado!</span>`
     avisoDiv.style.display = "flex"
     setTimeout(function (){
       avisoMsg.innerHTML = "Carregando proxima sessão!"
