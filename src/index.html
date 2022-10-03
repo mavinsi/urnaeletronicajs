@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UrnaJS</title>
+  <link href="./assets/fontawesome/css/all.css" rel="stylesheet">
+  <link href="output.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-200">
+  <div id="urnaDiv" class="flex justify-center items-center h-screen">
+    <div class="select-none max-w-xs">
+      <h1 class="font-semibold text-center text-4xl">Insira seu Voto</h1><br>
+      <input id="inputVoto" class="text-center w-full text-6xl" readonly maxlength="5" type="text">
+      <div class="grid grid-cols-3 text-2xl font-semibold">
+        <button onclick="addNumero(7)" class="bg-gray-900 m-2  h-16 text-white">7</button>
+        <button onclick="addNumero(8)" class="bg-gray-900  m-2 h-16 text-white">8</button>
+        <button onclick="addNumero(9)" class="bg-gray-900  m-2 h-16  text-white">9</button>
+        <button onclick="addNumero(4)" class="bg-gray-900 m-2 h-16  text-white">4</button>
+        <button onclick="addNumero(5)" class="bg-gray-900 m-2 h-16  text-white">5</button>
+        <button onclick="addNumero(6)" class="bg-gray-900 m-2 h-16  text-white">6</button>
+        <button onclick="addNumero(1)" class="bg-gray-900 m-2 h-16  text-white">1</button>
+        <button onclick="addNumero(2)" class="bg-gray-900 m-2 h-16  text-white">2</button>
+        <button onclick="addNumero(3)" class="bg-gray-900 m-2 h-16  text-white">3</button>
+        <button onclick="" class=" m-2 h-16  text-white"></button>
+        <button onclick="addNumero(0)" class="bg-gray-900 m-2 h-16  text-white">0</button>
+        <button onclick="" class=" m-2 h-16  text-white"></button>
+      </div>
+      <div class="mt-2 flex">
+        <button onclick="confirmarVoto()"
+          class="flex-1 bg-green-500 p-2 h-16 font-bold uppercase text-white">Confirmar</button>
+        <button onclick="limparVoto()"
+          class="flex-1 bg-red-500 p-2 h-16 font-bold uppercase text-white">Corrigir</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="avisoDiv" style="display: none;" class="flex justify-center items-center h-screen">
+    <div class="select-none max-w-xs">
+      <h1 id="avisoMsg" class="font-semibold text-center text-4xl"></h1><br>
+    </div>
+  </div>
+  <script src="./assets/nextpage.js"></script>
+  <script>
+    const inputVoto = document.getElementById("inputVoto")
+    const avisoMsg = document.getElementById("avisoMsg")
+    function addNumero(numero) {
+      console.log(inputVoto.value.length)
+      if (inputVoto.value.lenght > 5) {
+        window.alert("Os números dos candidatos não excedem 5 caracteres.")
+      } else {
+        inputVoto.value = String(inputVoto.value) + String(numero)
+      }
+    }
+
+    function proximaSessao() {
+      const urnaDiv = document.getElementById("urnaDiv")
+      const avisoDiv = document.getElementById("avisoDiv")
+
+
+    urnaDiv.style.display = "none"
+    avisoMsg.innerHTML = "Voto Confirmado!"
+    avisoDiv.style.display = "flex"
+    setTimeout(function (){
+      avisoMsg.innerHTML = "Carregando proxima sessão!"
+    },2500);
+    setTimeout(function () {
+window.location.reload()
+
+      }, 5000);
+    }
+
+    function confirmarVoto() {
+
+      limparVoto()
+      proximaSessao()
+    }
+    function limparVoto() {
+      inputVoto.value = ""
+    }
+  </script>
+</body>
+
+
+
+</html>
